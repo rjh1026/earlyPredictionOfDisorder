@@ -71,7 +71,6 @@ Pose Track 2018
 <br/>
 Reference: [Posetrack Data set: Summary](https://medium.com/@anuj_shah/posetrack-data-set-summary-9cf61fc6f44e)
 
-
 <p align="center"> <img src="https://miro.medium.com/max/800/1*D7hq1ULqzLedjkhwH1NwPg.jpeg"> </p>
 
 Posetrack is a new large-scale benchmark for video-based human pose estimation and articulated tracking.
@@ -114,6 +113,7 @@ ITOP
 - 15 joints
 - depth map, point cloud
 
+
 DensePose-COCO, PoseTrack
 ---
 [http://densepose.org](http://densepose.org)
@@ -139,5 +139,6 @@ MINI-RGBD dataset is focused on generating infant 2D/3D pose dataset without pri
 - infants up to the age of 7 months
 - continuous motions instead of single frames
 - RGB, depth images
+
 
 </details>
