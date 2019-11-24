@@ -113,7 +113,6 @@ ITOP
 - 15 joints
 - depth map, point cloud
 
-
 DensePose-COCO, PoseTrack
 ---
 [http://densepose.org](http://densepose.org)
@@ -139,6 +138,5 @@ MINI-RGBD dataset is focused on generating infant 2D/3D pose dataset without pri
 - infants up to the age of 7 months
 - continuous motions instead of single frames
 - RGB, depth images
-
 
 </details>
