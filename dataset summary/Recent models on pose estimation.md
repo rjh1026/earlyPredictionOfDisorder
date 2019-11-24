@@ -28,7 +28,6 @@ RMPE (2016)
 [[Paper Link]](https://arxiv.org/abs/1612.00137v5)
 [[Code Link]](https://github.com/MVIG-SJTU/AlphaPose) * Code link is connected to AlphaPose that is new version of RMPE.
 
-<br/>
 Ref: [STN (Spatial Transformer Network)](https://jamiekang.github.io/2017/05/27/spatial-transformer-networks/)
 
 <p align="center"><img src="./images/RMPE.PNG"></p>
@@ -62,7 +61,6 @@ Cascaded Pyramid Network(CPN+) (2017)
 [[Paper Link]](https://arxiv.org/abs/1711.07319v2)
 [[Code Link]](https://github.com/chenyilun95/tf-cpn)
 
-<br/>
 Ref: [[ResNet]](http://openresearch.ai/t/resnet-deep-residual-learning-for-image-recognition/41) [[RoIAlign of Mask R-CNN]](https://cdm98.tistory.com/33) [[FPN]](https://eehoeskrap.tistory.com/300) 
 
 <p align="center"><img src="./images/CPN.png"></p>
