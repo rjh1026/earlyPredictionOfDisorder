@@ -81,7 +81,6 @@ CPN의 GlobalNet 네트워크 구조는 ResNet backbone에 기반한다. ResNet�
 
 
 Deconvolution Head Network(가제) (2018)
-
 ---
 **"Simple Baselines for Human Pose Estimation and Tracking"**
 

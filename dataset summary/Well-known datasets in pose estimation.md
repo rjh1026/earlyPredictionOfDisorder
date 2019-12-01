@@ -97,9 +97,7 @@ Self-Stimulatory Behaviours in the Wild for Autism Diagnosis Dataset (SSBD)
 - 3 group (arm flapping, head banging, spinning)
 - XML annotation format.
 
-
 </details>
-
 
 <details markdown="1">
 <summary> <b>3D Pose Estimation Dataset</b> </summary>
