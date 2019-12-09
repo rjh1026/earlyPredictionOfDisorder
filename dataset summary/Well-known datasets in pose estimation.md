@@ -97,6 +97,15 @@ Self-Stimulatory Behaviours in the Wild for Autism Diagnosis Dataset (SSBD)
 - 3 group (arm flapping, head banging, spinning)
 - XML annotation format.
 
+Joint Track Auto (JTA) Dataset
+---
+<p align="center"> <img src="https://github.com/fabbrimatteo/JTA-Dataset/raw/master/jta_banner.jpg"> </p>
+
+- exported from video game (Grand Theft Auto V)
+- pedestrian pose estimation and tracking in urban scenarios
+- a set of 512 full-HD videos (256 for training, 256 for testing)
+- 30 seconds long, recorded at 30fps
+
 </details>
 
 <details markdown="1">

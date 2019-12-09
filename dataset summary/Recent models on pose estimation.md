@@ -80,7 +80,7 @@ CPN의 GlobalNet 네트워크 구조는 ResNet backbone에 기반한다. ResNet�
 그러나 GlobalNet 단일 네트워크로는 hard keypoints를 탐지하기에 부족하므로, RefineNet으로 upsampling과 concatenating을 하여 레벨 간 정보를 통합시킨다 (HyperNet 방식). 
 
 
-Deconvolution Head Network(가제) (2018)
+Simple Baseline Model (2018)
 ---
 **"Simple Baselines for Human Pose Estimation and Tracking"**
 
@@ -108,3 +108,25 @@ HRNet (2019)
 [[Code Link]](https://github.com/leoxiaobin/deep-high-resolution-net.pytorch)
 
 <p align="center"><img src="./images/HRNet.jpg" width="90%"></p>
+
+
+OccNet, OccNetCB (2019)
+---
+**"Human Pose Estimation for Real-World Crowded Scenarios"**
+
+[[Paper Link]](https://arxiv.org/abs/1907.06922)
+[[Code Link]](https://github.com/thomasgolda/Human-Pose-Estimation-for-Real-World-Crowded-Scenarios)
+
+<p align="center"><img src="./images/OccNet.PNG" width="70%"></p>
+<p align="center"><img src="./images/OccNet2.PNG"></p>
+<p align="center"><img src="./images/OccNet3.PNG"></p>
+
+<br/>
+
+해당 논문에서는 군중들에 대한 포즈 추정과 같은 (감시카메라를 통한 군중 행동 감지 등) 복잡한 환경에는 몇가지 해결해야할 과제가 있음을 말하고 있다. 공공장소에서 감시 카메라로부터 얻는 영상은 partially occluded people, mutual occlusions by humans, low resolution of persons와 같이 센서의 제한 혹은 카메라로부터의 거리 때문에 발생하는 문제가 있으므로 포즈 추정이 어려움을 주목한다. 따라서 이들은 사람들로 복잡한 감시 시나리오 환경을 구성하는 방법 및 데이터셋을 소개하며, occluded keypoints까지 탐지할 수 있는 모델을 제시한다. 
+
+이들은 군중 데이터셋으로 유명한 CrowdPose 데이터셋과 JTA(Joint Track Auto)라는 데이터셋을 비교하여 보완하였다. CrowdPose는 실세계의 사람들을 촬영한 이미지 데이터셋이기에 포즈가 다양하여 keypoint distribution이 넓게 퍼져있지만 대부분 카메라를 향해 바라보고 있다는 단점이 있다. 반면 JTA는 GTA게임 속 가상 환경에서 촬영된 이미지 데이터셋이므로 대부분 걸어다니는 자세라서 distribution이 좁지만, 사람이 카메라를 향하는 경우와 향하지 않는 경우 둘다 충분히 많다는 장점이 있다.
+이러한 차이를 고려해 JTA 데이터셋의 단점을 보완한 (모드를 사용하여 sitting, yoga, push-ups 등 동작 추가) JTA-Ext 데이터셋을 소개하며 3가지 모두 훈련과 실험에 사용하였다. 
+
+이들이 제시한 모델은 기존의 simple baseline model에서 occluded keypoints 탐지를 위한 branch를 추가함으로써 확장하였다. occluded and visble keypoints를 위한 branch가 서로 연결되어 있지만 서로 다른 task를 맡기는 이러한 구조는 occlusion을 다루는데 강한 모델을 만들어준다고 말하고 있다. OccNet은 backbone으로 ResNet50을 사용하며 simple baseline model과 마찬가지로 top-down 접근법을 사용한다. OccNet은 2개의 transposed convolution (deconvolution, up-convolution 등) 뒤에 나누어지는 반면, OccNetCB(Cross Branch)는 1개의 transposed convolution 뒤에 나뉘도록 하였다. 
+
