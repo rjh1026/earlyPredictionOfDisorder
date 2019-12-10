@@ -130,3 +130,24 @@ OccNet, OccNetCB (2019)
 
 이들이 제시한 모델은 기존의 simple baseline model에서 occluded keypoints 탐지를 위한 branch를 추가함으로써 확장하였다. occluded and visble keypoints를 위한 branch가 서로 연결되어 있지만 서로 다른 task를 맡기는 이러한 구조는 occlusion을 다루는데 강한 모델을 만들어준다고 말하고 있다. OccNet은 backbone으로 ResNet50을 사용하며 simple baseline model과 마찬가지로 top-down 접근법을 사용한다. OccNet은 2개의 transposed convolution (deconvolution, up-convolution 등) 뒤에 나누어지는 반면, OccNetCB(Cross Branch)는 1개의 transposed convolution 뒤에 나뉘도록 하였다. 
 
+CPM (2016)
+---
+**"Convolutional Pose Machine"**
+
+[[Paper Link]](https://arxiv.org/abs/1602.00134)
+[[Code Link]](https://github.com/shihenw/convolutional-pose-machines-release)
+
+Ref: [[Class Activation Map (Heat Map)]](https://kangbk0120.github.io/articles/2018-02/cam)
+
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/e50f409aa672c5eed54dc83d325a3cec6de98f3a.jpg"></p>
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/18f20fd72702bd2157277019938753e79bc6b5fb.jpg"></p>
+
+<br/>
+
+CPM은 CVPR'16에서 발표되어 최근 주목받고 있는 Part Affinity Fields (OpenPose) 연구의 기초가 되었다.
+
+CPM은 sequential prediction 구조를 통해 predictor가 점차 정교하게 예측하도록 유도한다. 이전 stage의 predictor가 생성한 belief map (heat map)과 현 stage의 image feature를 통해 더 나은 예측을 보여주는 belief map을 생성하게 된다. 여기서 predictor는 입력 이미지의 특정 위치에서 예측하려는 part 마다 localization score를 계산한다.
+
+CPM의 특징은 receptive field가 좁은 영역에서 점차 넓은 영역을 다룰 수 있도록 크기를 증가시켜 많은 spatial context information을 포함시킨다는 점이다. 이러한 large receptive field는 모델로 하여금 멀리 떨어진 parts 간의 관계까지 학습하도록 돕는다. 인식하기 쉬운 part의 정보가 애매해서 인식하기 어려운 part의 예측에 도움을 준다고 말하고 있다.
+
+이렇게 깊은 컨볼루션 레이어를 쌓다보면 vanishing gradients 문제가 발생하는데, 이를 각 stage마다 loss layer를 추가하는 방식으로 개선하였다.
