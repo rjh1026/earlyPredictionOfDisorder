@@ -40,7 +40,46 @@ Models
 OpenPose
 ---
 
-version: OpenPose 1.5.0 <br/>
-model: OpenPose [COCO model](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/quick_start.md#body_25-vs-coco-vs-mpi-models) <br/>
+test version: OpenPose 1.5.0 <br/>
+test model: OpenPose[-COCO model](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/quick_start.md#body_25-vs-coco-vs-mpi-models) <br/>
 
 I exported keypoints from the clips using OpenPose with cpu only mode. Because of the processing time (cpu mode: 0.3 fps, gpu mode: 10~15 fps), I tested a few samples only. The result is in [./videos/openpose_ssbd](./videos/openpose_ssbd).
+
+They describes [How to train OpenPose models with COCO images](https://github.com/CMU-Perceptual-Computing-Lab/openpose_train/tree/master/training#whole-body-training), **but there is no guide for custom training.**
+
+### Input Format
+
+In their caffe model training guide they use LMDB files and these are hard to see inside. But I guess they followed [COCO annotation format](http://cocodataset.org/#format-data) rules. 
+
+### Pose Output (COCO)
+
+<p align="center">
+    <img src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/keypoints_pose_18.png", width="480">
+</p>
+
+### Output Format
+
+```
+{
+    "version":1.1,
+    "people":[
+        {
+            "pose_keypoints_2d":[582.349,507.866,0.845918,746.975,631.307,0.587007,...],
+			# The length of list will be 18 (OpenPose-COCO model).
+        }
+    ]
+}
+```
+
+AlphaPose
+---
+
+They support training code from scratch. we can see inside of the model that implemented with pytorch also. [AlphaPose train.py](https://github.com/MVIG-SJTU/AlphaPose/blob/master/scripts/train.py)
+, [How to train issue](https://github.com/MVIG-SJTU/AlphaPose/issues/62)
+
+### Input Format
+
+### Output Format
+
+Output format and default keypoint ordering are described here [Keypoint Ordering](https://github.com/MVIG-SJTU/AlphaPose/blob/master/docs/output.md#keypoint-ordering).
+
