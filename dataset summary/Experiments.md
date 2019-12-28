@@ -37,21 +37,26 @@ One video has multiple behaviours (armflapping, headbanging, spinning), so we ca
 
 Models
 ===
+
 OpenPose
 ---
 
-test version: OpenPose 1.5.0 <br/>
-test model: OpenPose[-COCO model](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/quick_start.md#body_25-vs-coco-vs-mpi-models) <br/>
+~~test version: OpenPose 1.5.0~~ <br/>
+~~test model: OpenPose[-COCO model](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/quick_start.md#body_25-vs-coco-vs-mpi-models)~~ <br/>
 
-I exported keypoints from the clips using OpenPose with cpu only mode. Because of the processing time (cpu mode: 0.3 fps, gpu mode: 10~15 fps), I tested a few samples only. The result is in [./videos/openpose_ssbd](./videos/openpose_ssbd).
+~~I exported keypoints from the clips using OpenPose with cpu only mode. Because of the processing time (cpu mode: 0.3 fps, gpu mode: 10~15 fps), I tested a few samples only. The result is in [./videos/openpose_ssbd](./videos/openpose_ssbd).~~
 
-They describes [How to train OpenPose models with COCO images](https://github.com/CMU-Perceptual-Computing-Lab/openpose_train/tree/master/training#whole-body-training), **but there is no guide for custom training.**
+training guide: [How to train OpenPose models with COCO images](https://github.com/CMU-Perceptual-Computing-Lab/openpose_train/tree/master/training#whole-body-training) **(_but there is no guide for custom training_)**
+
+caffe model: [openpose_caffe_train](https://github.com/CMU-Perceptual-Computing-Lab/openpose_caffe_train)
 
 ### Input Format
 
-In their caffe model training guide they use LMDB files and these are hard to see inside. But I guess they followed [COCO annotation format](http://cocodataset.org/#format-data) rules. 
+In their training guide they use LMDB files and these are hard to see inside. I guess they followed [COCO annotation format](http://cocodataset.org/#format-data) rules. 
 
-### Pose Output (COCO)
+### Pose Order (COCO)
+
+They followed COCO annotation format which has 17 keypoints and added one more feature(Neck)  interpolated by Lsho and Rsho.
 
 <p align="center">
     <img src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/keypoints_pose_18.png", width="480">
@@ -74,12 +79,32 @@ In their caffe model training guide they use LMDB files and these are hard to se
 AlphaPose
 ---
 
-They support training code from scratch. we can see inside of the model that implemented with pytorch also. [AlphaPose train.py](https://github.com/MVIG-SJTU/AlphaPose/blob/master/scripts/train.py)
-, [How to train issue](https://github.com/MVIG-SJTU/AlphaPose/issues/62)
+They support training code from scratch. we can see inside of the model that implemented with pytorch also.
+ 
+training code: [train.py](https://github.com/MVIG-SJTU/AlphaPose/blob/master/scripts/train.py)
+
+pytorch model: [simplepose.py](https://github.com/MVIG-SJTU/AlphaPose/blob/master/alphapose/models/simplepose.py)
 
 ### Input Format
 
-### Output Format
+it seems to use COCO json format showed as above. 
+it contains 17 keypoints. <br/>
+```
+['Nose', Leye', 'Reye', 'Lear', 'Rear', 'Lsho', 'Rsho', 'Lelb', 'Relb', 'Lwri', 'Rwri', 'Lhip', 'Rhip', 'Lkne', 'Rkne', 'Lank', 'Rank']
+```
 
-Output format and default keypoint ordering are described here [Keypoint Ordering](https://github.com/MVIG-SJTU/AlphaPose/blob/master/docs/output.md#keypoint-ordering).
+### Pose Order and Output Format
 
+Keypoint ordering and Output format are described here [alphaPose - output format](https://github.com/MVIG-SJTU/AlphaPose/blob/master/docs/output.md#keypoint-ordering).
+
+Simple Baseline model
+---
+
+training code: [train.py](https://github.com/microsoft/human-pose-estimation.pytorch/blob/master/pose_estimation/train.py)
+
+pytorch model: [pose_resnet.py](https://github.com/microsoft/human-pose-estimation.pytorch/blob/2d723e3fd7f93dd81dd093af2328174555f6d552/lib/models/pose_resnet.py)
+
+### Input Format
+same as above. 17 keypoints.
+
+### Pose Order and Output Format
