@@ -14,7 +14,7 @@ MPII Human Pose Dataset
 - 410 human activities with activity labels.
 - Each image was extracted from a YouTube video and provided with preceding and following un-annotated frames.
 - Annotations are stored in a matlab structure.
-- Automatic evaluation server that evaluates differently depending on single/multi-person. 
+- Automatic evaluation server that evaluates differently depending on single/multi-person.
 - Performance analysis tools based on rich test set annotations that doesn't provide to tester.
 
 Leeds Sports Poses
@@ -145,5 +145,24 @@ MINI-RGBD dataset is focused on generating infant 2D/3D pose dataset without pri
 - infants up to the age of 7 months
 - continuous motions instead of single frames
 - RGB, depth images
+
+</details>
+
+<details markdown="1">
+<summary> <b>Action Recognition</b> </summary>
+
+[http://actionrecognition.net/files/dset.php](http://actionrecognition.net/files/dset.php)
+
+- HMDB
+- UCF101
+- Hollywood Extended
+- Breakfast Dataset
+- JHMDB
+- Charades
+- AVA
+- Kinetics
+- Epic-Kitchens
+- Something-Something
+- Moments
 
 </details>
