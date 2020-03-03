@@ -99,12 +99,36 @@ Self-Stimulatory Behaviours in the Wild for Autism Diagnosis Dataset (SSBD)
 
 Joint Track Auto (JTA) Dataset
 ---
+[https://github.com/fabbrimatteo/JTA-Dataset](https://github.com/fabbrimatteo/JTA-Dataset)
+
 <p align="center"> <img src="https://github.com/fabbrimatteo/JTA-Dataset/raw/master/jta_banner.jpg"> </p>
 
 - exported from video game (Grand Theft Auto V)
 - pedestrian pose estimation and tracking in urban scenarios
 - a set of 512 full-HD videos (256 for training, 256 for testing)
 - 30 seconds long, recorded at 30fps
+
+Infant Movement-Based Assessments (Infant Normative Dataset)
+---
+[https://github.com/cchamber/Infant_movement_assessment](https://github.com/cchamber/Infant_movement_assessment)
+
+<p align="center"><img src="https://github.com/cchamber/Infant_movement_assessment/raw/master/image/infant.gif" width=30%></p>
+
+They focused automated tests.
+
+This data set contains:
+
+- System to extract pose estimates from video. (pose_extraction.zip)
+- Zip file with 'data' and 'models' folders to add to code repository (infant_movement_assessment_repo_files.zip)
+- Meta-data of YouTube videos in normative database of healthy infant movement (meta_data_youtube_dataset.csv)
+- Meta-data of at-risk infant videos recorded in laboratory (meta_data_clinical_dataset.csv)
+- Raw pose estimates from YouTube videos included in normative database of healthy infant movement (pose_estimates_youtube_dataset.csv)
+- Raw pose estimates from videos recorded in laboratory (pose_estimates_clinical_dataset.csv)
+- URLs of YouTube videos used to adapt pose-estimation algorithm (URL_labelled_dataset.csv)
+- URLs of YouTube videos used for normative database of healthy infant movement (URL_pose_dataset.csv)
+- Search terms used to find infant videos on YouTube for adapting OpenPose and to include in the normative database of healthy infant movement (search_terms.txt)
+- Visualization of kinematic features
+- Supplemental table describing infants tested in the laboratory
 
 </details>
 
