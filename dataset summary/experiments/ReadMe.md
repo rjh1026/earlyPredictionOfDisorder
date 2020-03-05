@@ -1,5 +1,10 @@
+**아래 gif 영상들은 저하된 화질로 나타납니다.**
+
 Datasets
 ===
+
+<details markdown="1">
+<summary> <b>SSBD</b> </summary>
 
 SSBD
 ---
@@ -10,17 +15,17 @@ SSBD 데이터셋은 3가지 종류의 행동 (Arm flapping, Headbanging, Spinni
   1. 데이터셋이 제공하는 annotation 파일(`.xml`)을 기준으로, 각 원본 영상에서 (e.g. v_ArmFlapping_01.avi) 두드러진 Action이 관찰된 구간만 참조한다.
   2. 참조한 구간을 [오픈소스 툴](https://github.com/antran89/clipping_ssbd_videos)을 사용해 ???x320 size의 영상으로 추출한다.
 
-- ArmFlapping
-<p align="center"> <img src="../images/ssbd_armflapping.gif"> </p>
+ArmFlapping | HeadBanging | Spinning
+:--------:|:--------:|:--------:
+![](../images/ssbd_armflapping.gif) | ![](../images/ssbd_headbanging.gif) | ![](../images/ssbd_spinning.gif)
+
 <br/>
 
-- HeadBanging
-<p align="center"> <img src="../images/ssbd_headbanging.gif"> </p>
-<br/>
+</details>
 
-- Spinning
-<p align="center"> <img src="../images/ssbd_spinning.gif"> </p>
-<br/>
+
+<details markdown="1">
+<summary> <b>Infant Normative Dataset</b> </summary>
 
 Infant Normative Dataset
 ---
@@ -31,13 +36,13 @@ Infant Normative Dataset
   1. 데이터셋이 제공하는 annotation 파일(`.csv`)을 기준으로, 각 원본 영상에서 (e.g. 4.avi) 아이의 모습만 촬영된 구간을 참조한다.
   2. 참조한 구간을 MoviePy를 사용해 ???x320 size의 영상으로 추출한다.
 
-- example 1
-<p align="center"> <img src="../images/infant1.gif"> </p>
+example 1 | example 2
+:--------:|:--------:
+![](../images/infant1.gif) | ![](../images/infant2.gif)
+
 <br/>
 
-- example 2
-<p align="center"> <img src="../images/infant2.gif"> </p>
-<br/>
+</details>
 
 ---
 
@@ -46,3 +51,75 @@ Experiments
 
 Comparison
 ---
+
+<details markdown="1">
+<summary> <b>SSBD</b> </summary>
+
+### SSBD
+
+- ArmFlapping
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/armflapping_40_openpose.gif) | ![](../images/armflapping_40_alphapose.gif)
+![](../images/armflapping_mppe_49_openpose.gif) | ![](../images/armflapping_mppe_49_alphapose.gif)
+
+- HeadBanging
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/headbanging_05_openpose.gif) | ![](../images/headbanging_05_alphapose.gif)
+![](../images/headbanging_25_openpose.gif) | ![](../images/headbanging_25_alphapose.gif)
+
+- Spinning
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/spinning_02_openpose.gif) | ![](../images/spinning_02_alphapose.gif)
+![](../images/spinning_26_openpose.gif) | ![](../images/spinning_26_alphapose.gif)
+
+</details>
+
+
+<details markdown="1">
+<summary> <b>Infant Normative Dataset</b> </summary>
+
+### Infant Normative Dataset
+
+- 머리가 오른쪽/왼쪽 방향으로 향한 자세
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_59_openpose.gif) | ![](../images/ind_59_alphapose.gif)
+![](../images/ind_10_openpose.gif) | ![](../images/ind_10_alphapose.gif)
+
+- 머리가 위쪽 방향으로 향한 자세
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_5_openpose.gif) | ![](../images/ind_5_alphapose.gif)
+![](../images/ind_168_openpose.gif) | ![](../images/ind_168_alphapose.gif)
+
+- 새우잠 자세 / 특이한 자세
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_135_openpose.gif) | ![](../images/ind_135_alphapose.gif)
+![](../images/ind_86_openpose.gif) | ![](../images/ind_86_alphapose.gif)
+
+- 엎드린 자세
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_13_openpose.gif) | ![](../images/ind_13_alphapose.gif)
+![](../images/ind_135_2_openpose.gif) | ![](../images/ind_135_2_alphapose.gif)
+
+- 역동적인 움직임
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_32_openpose.gif) | ![](../images/ind_32_alphapose.gif)
+![](../images/ind_88_openpose.gif) | ![](../images/ind_88_alphapose.gif)
+
+
+</details>
