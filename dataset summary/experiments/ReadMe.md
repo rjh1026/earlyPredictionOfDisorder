@@ -1,5 +1,10 @@
+**아래 gif 영상들은 화질이 저하되었습니다.**
+
 Datasets
 ===
+
+<details markdown="1">
+<summary> <b>SSBD</b> </summary>
 
 SSBD
 ---
@@ -10,17 +15,17 @@ SSBD 데이터셋은 3가지 종류의 행동 (Arm flapping, Headbanging, Spinni
   1. 데이터셋이 제공하는 annotation 파일(`.xml`)을 기준으로, 각 원본 영상에서 (e.g. v_ArmFlapping_01.avi) 두드러진 Action이 관찰된 구간만 참조한다.
   2. 참조한 구간을 [오픈소스 툴](https://github.com/antran89/clipping_ssbd_videos)을 사용해 ???x320 size의 영상으로 추출한다.
 
-- ArmFlapping
-<p align="center"> <img src="../images/ssbd_armflapping.gif"> </p>
+ArmFlapping | HeadBanging | Spinning
+:--------:|:--------:|:--------:
+![](../images/ssbd_armflapping.gif) | ![](../images/ssbd_headbanging.gif) | ![](../images/ssbd_spinning.gif)
+
 <br/>
 
-- HeadBanging
-<p align="center"> <img src="../images/ssbd_headbanging.gif"> </p>
-<br/>
+</details>
 
-- Spinning
-<p align="center"> <img src="../images/ssbd_spinning.gif"> </p>
-<br/>
+
+<details markdown="1">
+<summary> <b>Infant Normative Dataset</b> </summary>
 
 Infant Normative Dataset
 ---
@@ -31,13 +36,13 @@ Infant Normative Dataset
   1. 데이터셋이 제공하는 annotation 파일(`.csv`)을 기준으로, 각 원본 영상에서 (e.g. 4.avi) 아이의 모습만 촬영된 구간을 참조한다.
   2. 참조한 구간을 MoviePy를 사용해 ???x320 size의 영상으로 추출한다.
 
-- example 1
-<p align="center"> <img src="../images/infant1.gif"> </p>
+example 1 | example 2
+:--------:|:--------:
+![](../images/infant1.gif) | ![](../images/infant2.gif)
+
 <br/>
 
-- example 2
-<p align="center"> <img src="../images/infant2.gif"> </p>
-<br/>
+</details>
 
 ---
 
@@ -46,3 +51,40 @@ Experiments
 
 Comparison
 ---
+
+<details markdown="1">
+<summary> <b>SSBD</b> </summary>
+
+### SSBD
+
+- ArmFlapping
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/.gif) | ![](../images/.gif)
+
+- HeadBanging
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/.gif) | ![](../images/.gif)
+
+- Spinning
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/.gif) | ![](../images/.gif)
+
+</details>
+
+
+<details markdown="1">
+<summary> <b>Infant Normative Dataset</b> </summary>
+
+### Infant Normative Dataset
+
+- 머리가 오른쪽/왼쪽 방향으로 향하도록 누운 자세
+
+- 머리가 위쪽 방향으로 향하도록 누운 자세
+
+</details>
