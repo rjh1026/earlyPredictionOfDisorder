@@ -1,4 +1,4 @@
-**아래 gif 영상들은 화질이 저하되었습니다.**
+**아래 gif 영상들은 저하된 화질로 나타납니다.**
 
 Datasets
 ===
@@ -61,19 +61,22 @@ Comparison
 
 OpenPose | AlphaPose
 :--------:|:--------:
-![](../images/.gif) | ![](../images/.gif)
+![](../images/armflapping_40_openpose.gif) | ![](../images/armflapping_40_alphapose.gif)
+![](../images/armflapping_mppe_49_openpose.gif) | ![](../images/armflapping_mppe_49_alphapose.gif)
 
 - HeadBanging
 
 OpenPose | AlphaPose
 :--------:|:--------:
-![](../images/.gif) | ![](../images/.gif)
+![](../images/headbanging_05_openpose.gif) | ![](../images/headbanging_05_alphapose.gif)
+![](../images/headbanging_25_openpose.gif) | ![](../images/headbanging_25_alphapose.gif)
 
 - Spinning
 
 OpenPose | AlphaPose
 :--------:|:--------:
-![](../images/.gif) | ![](../images/.gif)
+![](../images/spinning_02_openpose.gif) | ![](../images/spinning_02_alphapose.gif)
+![](../images/spinning_26_openpose.gif) | ![](../images/spinning_26_alphapose.gif)
 
 </details>
 
@@ -83,8 +86,40 @@ OpenPose | AlphaPose
 
 ### Infant Normative Dataset
 
-- 머리가 오른쪽/왼쪽 방향으로 향하도록 누운 자세
+- 머리가 오른쪽/왼쪽 방향으로 향한 자세
 
-- 머리가 위쪽 방향으로 향하도록 누운 자세
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_59_openpose.gif) | ![](../images/ind_59_alphapose.gif)
+![](../images/ind_10_openpose.gif) | ![](../images/ind_10_alphapose.gif)
+
+- 머리가 위쪽 방향으로 향한 자세
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_5_openpose.gif) | ![](../images/ind_5_alphapose.gif)
+![](../images/ind_168_openpose.gif) | ![](../images/ind_168_alphapose.gif)
+
+- 새우잠 자세 / 특이한 자세
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_135_openpose.gif) | ![](../images/ind_135_alphapose.gif)
+![](../images/ind_86_openpose.gif) | ![](../images/ind_86_alphapose.gif)
+
+- 엎드린 자세
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_13_openpose.gif) | ![](../images/ind_13_alphapose.gif)
+![](../images/ind_135_2_openpose.gif) | ![](../images/ind_135_2_alphapose.gif)
+
+- 역동적인 움직임
+
+OpenPose | AlphaPose
+:--------:|:--------:
+![](../images/ind_32_openpose.gif) | ![](../images/ind_32_alphapose.gif)
+![](../images/ind_88_openpose.gif) | ![](../images/ind_88_alphapose.gif)
+
 
 </details>
