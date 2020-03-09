@@ -205,4 +205,19 @@ Ref: [[3D Convolution]](https://jay.tech.blog/2017/02/02/3d-convolutional-networ
 
 - stage 2: Linking keypoint predictions into tracks
     - 이전 연구들과 유사하게 bipartite matching problem을 실험을 통해 Hungarian 알고리즘이 greedy 알고리즘보다 약간 더 우수함을 보였다.
-    - 이들은 한 프레임에서 발견된 instance를 node로 표현, 그리고 인접한 프레임 사이에서 node들간의 연결을 edge로 표현하여 각 edge를 연결하기위한 cost를 likelihood value로 정의한다. 이들은 likelihood metric을 4가지로 제안하여 비교하였는데, 인접 프레임 사이에서 1) Visual similarity (feature map간의 유사성 계산), 2) Location similarity (bounding box간의 Intersection of Union), 3) Pose similarity (PCKh distance) 4) LSTM model을 이용한 learned distance metric 로 제안한다. 결과적으로 tracking 성능이 우수하면서 계산량이 적은 Hungarian matching algorithm using IoU metric을 사용한다. 
+    - 이들은 한 프레임에서 발견된 instance를 node로 표현, 그리고 인접한 프레임 사이에서 node들간의 연결을 edge로 표현하여 각 edge를 연결하기위한 cost를 likelihood value로 정의한다. 이들은 likelihood metric을 4가지로 제안하여 비교하였는데, 인접 프레임 사이에서 1) Visual similarity (feature map간의 유사성 계산), 2) Location similarity (bounding box간의 Intersection of Union), 3) Pose similarity (PCKh distance) 4) LSTM model을 이용한 learned distance metric 로 제안한다. 결과적으로 tracking 성능이 우수하면서 계산량이 적은 Hungarian matching algorithm using IoU metric을 사용한다.
+
+OpenPose (2017)
+---
+**"Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields"**
+
+[[Paper Link]](https://arxiv.org/abs/1611.08050)
+[[Code Link]](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
+
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/0127956ac5fbca22c354089238853a5d0f2e8700.jpg"></p>
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/f337f75048543923f41beb7cc9430d1e8c4c2eda.png"></p>
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/6ade961a4a8917ae5d239c9e8dc751b1c4932cbe.jpg"></p>
+
+<br/>
+
+- temp
