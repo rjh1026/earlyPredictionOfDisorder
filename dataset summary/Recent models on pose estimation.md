@@ -205,4 +205,38 @@ Ref: [[3D Convolution]](https://jay.tech.blog/2017/02/02/3d-convolutional-networ
 
 - stage 2: Linking keypoint predictions into tracks
     - 이전 연구들과 유사하게 bipartite matching problem을 실험을 통해 Hungarian 알고리즘이 greedy 알고리즘보다 약간 더 우수함을 보였다.
-    - 이들은 한 프레임에서 발견된 instance를 node로 표현, 그리고 인접한 프레임 사이에서 node들간의 연결을 edge로 표현하여 각 edge를 연결하기위한 cost를 likelihood value로 정의한다. 이들은 likelihood metric을 4가지로 제안하여 비교하였는데, 인접 프레임 사이에서 1) Visual similarity (feature map간의 유사성 계산), 2) Location similarity (bounding box간의 Intersection of Union), 3) Pose similarity (PCKh distance) 4) LSTM model을 이용한 learned distance metric 로 제안한다. 결과적으로 tracking 성능이 우수하면서 계산량이 적은 Hungarian matching algorithm using IoU metric을 사용한다. 
+    - 이들은 한 프레임에서 발견된 instance를 node로 표현, 그리고 인접한 프레임 사이에서 node들간의 연결을 edge로 표현하여 각 edge를 연결하기위한 cost를 likelihood value로 정의한다. 이들은 likelihood metric을 4가지로 제안하여 비교하였는데, 인접 프레임 사이에서 1) Visual similarity (feature map간의 유사성 계산), 2) Location similarity (bounding box간의 Intersection of Union), 3) Pose similarity (PCKh distance) 4) LSTM model을 이용한 learned distance metric 로 제안한다. 결과적으로 tracking 성능이 우수하면서 계산량이 적은 Hungarian matching algorithm using IoU metric을 사용한다.
+
+OpenPose (2017)
+---
+**"Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields"**
+
+[[Paper Link]](https://arxiv.org/abs/1611.08050)
+[[Code Link]](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
+
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/0127956ac5fbca22c354089238853a5d0f2e8700.jpg"></p>
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/f337f75048543923f41beb7cc9430d1e8c4c2eda.png" width="80%"></p>
+<p align="center"><img src="http://openresearch.ai/uploads/default/original/1X/6ade961a4a8917ae5d239c9e8dc751b1c4932cbe.jpg" width="80%"></p>
+
+<br/>
+
+- OpenPose는 single person pose estimation에 제한적이었던 CPM을 개선한 모델이다. 일반적으로 multi person pose estimation 문제에선 top-down 방식을 사용하지만, early commitment에 의한 어려움이 존재한다. 반면 제안하는 bottom-up 방식은 이미지로부터 한번에 모든 사람의 keypoint를 찾고 각 사람의 part로 조합하는 것으로 이러한 제약에 강인하다.
+  - early commitment:
+    1. 만약 person detector가 실패하면, pose estimation도 실패한다.
+    2. 사람 수가 증가함에 따라 runtime complexity도 증가한다.
+
+- 본 논문에선 keypoint를 찾는 것뿐만 아니라 part와 part간의 연관성을 추론하는 Part Affinity Fields(PAFs)를 제안한다. 단순히 keypoint 정보만으로는 한 사람을(instance) 구성하는 part가 어느 것인지 판별하기 어렵기 때문에, PAFs를 통해 part와 part간 연관성 점수(association score)를 계산하여 bipartite graph matching을 수행한다.
+  - PAFs는 part와 part를 잇는 limb의 방향을 나타내는 vector로 학습된다. 만약 팔꿈치의 위치 x1과 손목의 위치 x2가 있을때, PAFs에서 x1과 x2를 잇는 구간의 값들은 unit vector로 표현된다.
+
+- 추론 과정은 다음과 같다.
+  1. two-branch multi-stage CNNs를 통해 이미지 내 모든 사람에 대한 2D confidence map과 PAFs 추론. 반복적인 stage를 통해 refine된 결과를 얻는다.
+    - first branch : predicts 2D confidence maps of body part locations (one per part)
+    - second branch : predicts 2D vector fields of part affinities (one per limb)
+  2. part 후보들을 얻으면 연관성 점수를 계산하여 part간의 관계를 결정한다.
+    - 연관성 점수는 confidence map의 예측된 parts (point x1, x2)가 이루는 방향과 PAFs가 나타내는 limb의 방향이 일치할수록 높은 점수를 부여한다.
+  3. edge (연관성 점수)와 node (예측된 parts)로 표현된 bipartite graph에서 optimal matching을 얻기 위해 헝가리안 알고리즘 사용.
+
+- 이러한 방식은 realtime (8.8fps for a video with 19 people) 성능을 보여준다.
+  - CNN processing time: O(1)
+  - multi-person parsing time (matching time): O(n^2) (n은 사람 수)
+    - matching time이 오래 걸리는 듯 보이나 전반적인 runtime에 거의 영향을 미치지 않는다.
