@@ -49,6 +49,11 @@ example 1 | example 2
 Experiments
 ===
 
+사용한 모델
+- [OpenPose](https://github.com/prasunroy/openpose-pytorch) (pytorch version)
+- [AlphaPose](https://github.com/aFewThings/AlphaPose/blob/master/docs/MODEL_ZOO.md) (backbone: HRNet-W32, detector: YOLOv3)
+- infant normative dataset에 적용시킨 [transfer learning openpose](https://github.com/cchamber/Infant_movement_assessment#2-extract-pose-from-videos)
+
 Comparison
 ---
 
@@ -88,38 +93,38 @@ OpenPose | AlphaPose
 
 - 머리가 오른쪽/왼쪽 방향으로 향한 자세
 
-OpenPose | AlphaPose
-:--------:|:--------:
-![](../images/ind_59_openpose.gif) | ![](../images/ind_59_alphapose.gif)
-![](../images/ind_10_openpose.gif) | ![](../images/ind_10_alphapose.gif)
+OpenPose | AlphaPose | transfer_learning_openpose
+:--------:|:--------:|:--------:
+![](../images/ind_59_openpose.gif) | ![](../images/ind_59_alphapose.gif) | ![](../images/ind_59_tfl_openpose.gif)
+![](../images/ind_10_openpose.gif) | ![](../images/ind_10_alphapose.gif) | ![](../images/ind_10_tfl_openpose.gif)
 
 - 머리가 위쪽 방향으로 향한 자세
 
-OpenPose | AlphaPose
-:--------:|:--------:
-![](../images/ind_5_openpose.gif) | ![](../images/ind_5_alphapose.gif)
-![](../images/ind_168_openpose.gif) | ![](../images/ind_168_alphapose.gif)
+OpenPose | AlphaPose | transfer_learning_openpose
+:--------:|:--------:|:--------:
+![](../images/ind_5_openpose.gif) | ![](../images/ind_5_alphapose.gif) | ![](../images/ind_5_tfl_openpose.gif)
+![](../images/ind_168_openpose.gif) | ![](../images/ind_168_alphapose.gif) | ![](../images/ind_168_tfl_openpose.gif)
 
 - 새우잠 자세 / 특이한 자세
 
-OpenPose | AlphaPose
-:--------:|:--------:
-![](../images/ind_135_openpose.gif) | ![](../images/ind_135_alphapose.gif)
-![](../images/ind_86_openpose.gif) | ![](../images/ind_86_alphapose.gif)
+OpenPose | AlphaPose | transfer_learning_openpose
+:--------:|:--------:|:--------:
+![](../images/ind_135_openpose.gif) | ![](../images/ind_135_alphapose.gif) | ![](../images/ind_135_tfl_openpose.gif)
+![](../images/ind_86_openpose.gif) | ![](../images/ind_86_alphapose.gif) | ![](../images/ind_86_tfl_openpose.gif)
 
 - 엎드린 자세
 
-OpenPose | AlphaPose
-:--------:|:--------:
-![](../images/ind_13_openpose.gif) | ![](../images/ind_13_alphapose.gif)
-![](../images/ind_135_2_openpose.gif) | ![](../images/ind_135_2_alphapose.gif)
+OpenPose | AlphaPose | transfer_learning_openpose
+:--------:|:--------:|:--------:
+![](../images/ind_13_openpose.gif) | ![](../images/ind_13_alphapose.gif) | ![](../images/ind_13_tfl_openpose.gif)
+![](../images/ind_135_2_openpose.gif) | ![](../images/ind_135_2_alphapose.gif) | ![](../images/ind_135_tfl_openpose.gif)
 
 - 역동적인 움직임
 
-OpenPose | AlphaPose
-:--------:|:--------:
-![](../images/ind_32_openpose.gif) | ![](../images/ind_32_alphapose.gif)
-![](../images/ind_88_openpose.gif) | ![](../images/ind_88_alphapose.gif)
+OpenPose | AlphaPose | transfer_learning_openpose
+:--------:|:--------:|:--------:
+![](../images/ind_32_openpose.gif) | ![](../images/ind_32_alphapose.gif) | ![](../images/ind_32_tfl_openpose.gif)
+![](../images/ind_88_openpose.gif) | ![](../images/ind_88_alphapose.gif) | ![](../images/ind_88_tfl_openpose.gif)
 
 
 </details>
