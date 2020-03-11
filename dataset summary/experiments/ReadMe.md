@@ -117,7 +117,7 @@ OpenPose | AlphaPose | transfer_learning_openpose
 OpenPose | AlphaPose | transfer_learning_openpose
 :--------:|:--------:|:--------:
 ![](../images/ind_13_openpose.gif) | ![](../images/ind_13_alphapose.gif) | ![](../images/ind_13_tfl_openpose.gif)
-![](../images/ind_135_2_openpose.gif) | ![](../images/ind_135_2_alphapose.gif) | ![](../images/ind_135_tfl_openpose.gif)
+![](../images/ind_135_2_openpose.gif) | ![](../images/ind_135_2_alphapose.gif) | ![](../images/ind_135_2_tfl_openpose.gif)
 
 - 역동적인 움직임
 
