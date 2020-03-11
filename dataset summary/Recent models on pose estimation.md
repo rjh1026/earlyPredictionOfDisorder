@@ -221,22 +221,22 @@ OpenPose (2017)
 <br/>
 
 - OpenPose는 single person pose estimation에 제한적이었던 CPM을 개선한 모델이다. 일반적으로 multi person pose estimation 문제에선 top-down 방식을 사용하지만, early commitment에 의한 어려움이 존재한다. 반면 제안하는 bottom-up 방식은 이미지로부터 한번에 모든 사람의 keypoint를 찾고 각 사람의 part로 조합하는 것으로 이러한 제약에 강인하다.
-  - early commitment:
-    1. 만약 person detector가 실패하면, pose estimation도 실패한다.
-    2. 사람 수가 증가함에 따라 runtime complexity도 증가한다.
+    - early commitment:
+        1. 만약 person detector가 실패하면, pose estimation도 실패한다.
+        2. 사람 수가 증가함에 따라 runtime complexity도 증가한다.
 
 - 본 논문에선 keypoint를 찾는 것뿐만 아니라 part와 part간의 연관성을 추론하는 Part Affinity Fields(PAFs)를 제안한다. 단순히 keypoint 정보만으로는 한 사람을(instance) 구성하는 part가 어느 것인지 판별하기 어렵기 때문에, PAFs를 통해 part와 part간 연관성 점수(association score)를 계산하여 bipartite graph matching을 수행한다.
-  - PAFs는 part와 part를 잇는 limb의 방향을 나타내는 vector로 학습된다. 만약 팔꿈치의 위치 x1과 손목의 위치 x2가 있을때, PAFs에서 x1과 x2를 잇는 구간의 값들은 unit vector로 표현된다.
+    - PAFs는 part와 part를 잇는 limb의 방향을 나타내는 vector로 학습된다. 만약 팔꿈치의 위치 x1과 손목의 위치 x2가 있을때, PAFs에서 x1과 x2를 잇는 구간의 값들은 unit vector로 표현된다.
 
 - 추론 과정은 다음과 같다.
-  1. two-branch multi-stage CNNs를 통해 이미지 내 모든 사람에 대한 2D confidence map과 PAFs 추론. 반복적인 stage를 통해 refine된 결과를 얻는다.
-    - first branch : predicts 2D confidence maps of body part locations (one per part)
-    - second branch : predicts 2D vector fields of part affinities (one per limb)
-  2. part 후보들을 얻으면 연관성 점수를 계산하여 part간의 관계를 결정한다.
-    - 연관성 점수는 confidence map의 예측된 parts (point x1, x2)가 이루는 방향과 PAFs가 나타내는 limb의 방향이 일치할수록 높은 점수를 부여한다.
-  3. edge (연관성 점수)와 node (예측된 parts)로 표현된 bipartite graph에서 optimal matching을 얻기 위해 헝가리안 알고리즘 사용.
+    1. two-branch multi-stage CNNs를 통해 이미지 내 모든 사람에 대한 2D confidence map과 PAFs 추론. 반복적인 stage를 통해 refine된 결과를 얻는다.
+        - first branch : predicts 2D confidence maps of body part locations (one per part)
+        - second branch : predicts 2D vector fields of part affinities (one per limb)
+    2. part 후보들을 얻으면 연관성 점수를 계산하여 part간의 관계를 결정한다.
+        - 연관성 점수는 confidence map의 예측된 parts (point x1, x2)가 이루는 방향과 PAFs가 나타내는 limb의 방향이 일치할수록 높은 점수를 부여한다.
+    3. edge (연관성 점수)와 node (예측된 parts)로 표현된 bipartite graph에서 optimal matching을 얻기 위해 헝가리안 알고리즘 사용.
 
 - 이러한 방식은 realtime (8.8fps for a video with 19 people) 성능을 보여준다.
-  - CNN processing time: O(1)
-  - multi-person parsing time (matching time): O(n^2) (n은 사람 수)
-    - matching time이 오래 걸리는 듯 보이나 전반적인 runtime에 거의 영향을 미치지 않는다.
+    - CNN processing time: O(1)
+    - multi-person parsing time (matching time): O(n^2) (n은 사람 수)
+        - matching time이 오래 걸리는 듯 보이나 전반적인 runtime에 거의 영향을 미치지 않는다.
