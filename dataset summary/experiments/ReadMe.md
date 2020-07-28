@@ -1,3 +1,5 @@
+원본/실험 결과 영상: [https://drive.google.com/drive/folders/1F20V1kSXzggAlMhMA526Urar8GtNwHli?usp=sharing](https://drive.google.com/drive/folders/1F20V1kSXzggAlMhMA526Urar8GtNwHli?usp=sharing)
+
 **아래 gif 영상들은 저하된 화질로 나타납니다.**
 
 Datasets
