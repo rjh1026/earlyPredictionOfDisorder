@@ -1,0 +1,20 @@
+# pretrained model setting
+# https://github.com/bearpaw/pytorch-pose/blob/013e12c9c7c048ff22a24da580f7a994e44b8b97/experiments/mpii/256x256-hg-s1-b1-rmsprop-lr1e-3.sh
+
+MODEL:
+  NAME: 'stacked_hourglass'
+  num_stacks: 2
+  num_blocks: 1
+  NUM_JOINTS: 16 
+
+DATASET:
+  NAME: 'lsp'
+  INP_RES: 256
+  OUT_RES: 64
+  SIGMA: 1
+  use_std: False
+
+EVAL_METRIC: 'pck'  # evaluation metric
+
+OPTS:  # main options
+  BATCH_SIZE: 4

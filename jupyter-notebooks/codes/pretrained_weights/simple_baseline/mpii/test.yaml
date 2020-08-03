@@ -1,0 +1,32 @@
+# pretrained model setting
+# https://github.com/microsoft/human-pose-estimation.pytorch/blob/master/experiments/mpii/resnet101/256x256_d256x3_adam_lr1e-3.yaml 
+
+MODEL:
+  NAME: 'simple_baseline'
+  NUM_JOINTS: 16
+  EXTRA:
+    FINAL_CONV_KERNEL: 1
+    DECONV_WITH_BIAS: false
+    NUM_DECONV_LAYERS: 3
+    NUM_DECONV_FILTERS:
+    - 256
+    - 256
+    - 256
+    NUM_DECONV_KERNELS:
+    - 4
+    - 4
+    - 4
+    NUM_LAYERS: 101
+  STYLE: 'pytorch'
+  
+DATASET:
+  NAME: 'lsp'
+  INP_RES: 256
+  OUT_RES: 64
+  SIGMA: 1
+  use_std: True
+
+EVAL_METRIC: 'pck'  # evaluation metric
+
+OPTS:  # main options
+  BATCH_SIZE: 4

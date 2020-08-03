@@ -1,0 +1,9 @@
+https://github.com/bearpaw/pytorch-pose
+
+pretrained_model (best version) with mpii dataset
+
+about accuracy: 
+	https://github.com/bearpaw/pytorch-pose/issues/15
+	https://github.com/bearpaw/pytorch-pose/issues/42
+
+transfrom에서  normalize할떄 std로 나누어주지않음.
