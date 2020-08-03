@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 #import scipy.misc
 
-from codes.utils.misc import *
+from utils.misc import *
 
 
 def im_to_numpy(img):

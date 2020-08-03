@@ -6,24 +6,34 @@ import torch
 import torchvision.transforms as tvtf
 from torch.utils.data import Dataset
 
-from codes.utils.osutils import *
-from codes.utils.imutils import *
-from codes.utils.transforms import *
+from utils.osutils import *
+from utils.imutils import *
+from utils.transforms import *
 
 
 def get_dataset(is_train=True, **kwargs):
+    for key in ['INP_RES', 'OUT_RES', 'SIGMA']:
+        assert key in kwargs.keys()
+
     return LSP(is_train, **kwargs)
 
 
 class LSP(Dataset):
-
+    """
+    LSP extended dataset (11,000 train, 1000 test)
+    Original datasets contain 14 keypoints. We interpolate mid-hip and mid-shoulder and change the indices to match
+    the MPII dataset (16 keypoints).
+    Wei Yang (bearpaw@GitHub)
+    2017-09-28
+    """
     def __init__(self, is_train=True, **kwargs):
-        self.img_folder = join_path('data', 'lsp')
-        self.jsonfile = join_path('data', 'lsp', 'LEEDS_annotations.json')
-        self.is_train = is_train
-        self.inp_res = kwargs['inp_res']
-        self.out_res = kwargs['out_res']
-        self.sigma = kwargs['sigma'] # 1
+        self.img_folder = join_path('..', 'data', 'lsp')
+        self.jsonfile   = join_path('..', 'data', 'lsp', 'LEEDS_annotations.json')
+        self.is_train   = is_train
+        self.inp_res    = kwargs['INP_RES']
+        self.out_res    = kwargs['OUT_RES']
+        self.sigma      = kwargs['SIGMA'] # 1 ~ 6
+        self.use_std    = kwargs['use_std']
         
         # create train/val split
         with open(self.jsonfile) as anno_file:
@@ -33,11 +43,11 @@ class LSP(Dataset):
         self.valid_list = []
 
         for idx, obj in enumerate(self.anno):
-            # pelvis(mid-hip), thorax(mid-shoulder)는 불필요하므로 주석에서 제거하였습니다.
             pts = obj['joint_self']
-            del pts[6:8] # keypoint 16 -> 14
+            
+            # remove pelvis(mid-hip) and thorax(mid-shoulder) points
+            #del pts[6:8] # keypoint 16 -> 14
 
-            # train set과 validation set을 나눕니다.
             if obj['isValidation'] == True:
                 self.valid_list.append(idx)
             else:
@@ -49,13 +59,17 @@ class LSP(Dataset):
             self.sf = 0.25 # scale factor
             self.rf = 30   # rotate factor
             self.transform = tvtf.Compose([ColorJittering(0.8, 1.2), 
-                                            ColorNormalize(self.mean, self.std)])
+                                            ColorNormalize(self.mean, self.std, use_std=self.use_std)])
         else:
-            self.transform = tvtf.Compose([ColorNormalize(self.mean, self.std)])
+            # 임시 설정 (모델마다 훈련한 환경이 다르기 때문에 지저분하게 처리되었지만 전체적인 훈련과정은 동일합니다.)
+            if self.use_std == False:
+                self.transform = tvtf.Compose([ColorNormalize(self.mean, self.std, use_std=False)]) # stacked hourglass
+            else:
+                self.transform = tvtf.Compose([ColorNormalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225], use_std=True)]) # simple baseline
 
-    # Normalize에 사용할 train set의 평균과 표준편차를 계산합니다.
+
     def _compute_mean(self):
-        meanstd_file = join_path('data', 'lsp', 'mean.pth.tar') 
+        meanstd_file = join_path('..', 'data', 'lsp', 'mean.pth.tar') 
 
         if isfile(meanstd_file):
             meanstd = torch.load(meanstd_file)
@@ -76,11 +90,10 @@ class LSP(Dataset):
                 'mean': mean,
                 'std': std
             }
-            torch.save(meanstd, meanstd_file) # 파일로 저장
+            torch.save(meanstd, meanstd_file)
         
-        if self.is_train:
-            print('    Mean: %.4f, %.4f, %.4f' % (meanstd['mean'][0], meanstd['mean'][1], meanstd['mean'][2]))
-            print('    Std:  %.4f, %.4f, %.4f' % (meanstd['std'][0], meanstd['std'][1], meanstd['std'][2]))
+        print('    Mean: %.4f, %.4f, %.4f' % (meanstd['mean'][0], meanstd['mean'][1], meanstd['mean'][2]))
+        print('    Std:  %.4f, %.4f, %.4f' % (meanstd['std'][0], meanstd['std'][1], meanstd['std'][2]))
 
         return meanstd['mean'], meanstd['std']
 
@@ -102,7 +115,7 @@ class LSP(Dataset):
         pts = torch.Tensor(obj['joint_self']) # keypoints 14 
 
         c = torch.Tensor(obj['objpos']) # rough human position in the image
-        s = obj['scale_provided'] # person scale with respect to 200 px height
+        s = obj['scale_provided'] # person scale with respect to 150px height
 
         # LSP uses matlab format, index is based 1,
         # we should first convert to 0-based index

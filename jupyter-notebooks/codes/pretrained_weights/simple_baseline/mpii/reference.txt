@@ -1,0 +1,3 @@
+https://github.com/microsoft/human-pose-estimation.pytorch
+
+transform에서 normalize할때 mean, std 사용

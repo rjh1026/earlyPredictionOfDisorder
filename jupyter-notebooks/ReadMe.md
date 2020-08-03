@@ -12,7 +12,7 @@ Before to start
 - **python 3.6, pytorch 1.5.0 for cudatoolkit=10.2**
 - CUDA 10.2, cuDNN 7.6.5 for CUDA 10.2 (버전은 사용하는 GPU에 따라 달라질 수 있으나, 10.0 이상 권장)
 
-훈련에 앞서 반드시 GPU 메모리가 충분한지 확인하기 바랍니다.<br/> 코드를 직접 실행을 할 수 없다면 `.ipynb` 파일에 코드와 실행결과를 같이 기록했으니 참고하세요.<br/>
+진행에 앞서 반드시 GPU 메모리가 충분한지 확인하기 바랍니다.<br/> 코드를 직접 실행을 할 수 없다면 `.ipynb` 파일에 코드와 실행결과를 같이 기록했으니 참고하세요.<br/>
 `.ipynb` 파일은 github에서도 직접 볼 수 있지만 간혹 렌더링되지 않는 경우가 있기 때문에, [https://nbviewer.jupyter.org/](https://nbviewer.jupyter.org/)사이트를 이용하시는 것을 추천합니다. 
 
 Contents
