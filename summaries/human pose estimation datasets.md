@@ -1,4 +1,4 @@
-Well-known Datasets In Pose Estimation
+Human Pose Estimation Datasets
 ===
 
 <details markdown="1">
