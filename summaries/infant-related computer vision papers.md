@@ -23,7 +23,7 @@
 
 #### Invariant Representation Learning for Infant Pose Estimation with Small Data (2020)
 
-<p align="center"><img src="./images/FiDIP.PNG" width=80%></p>
+<p align="center"><img src="./images/FiDIP.png" width=80%></p>
 
 - **Models trained on large-scale adult pose datasets are barely successful in estimating infant poses** due to the significant differences in their body ratio and the versatility of poses they can take compared to adults. Moreover, the privacy and security considerations hinder the availability of adequate infant images required for training of a robust pose inference model from scratch.
 - They focused on a **critical small data problem** of infant pose estimation.
@@ -39,7 +39,7 @@
 
 #### Video Gesture Analysis for Autism Spectrum Disorder Detection (2018)
 
-<p align="center"><img src="https://d3i71xaburhd42.cloudfront.net/f03a9f4b52392bdd570238569522002aec3f52e4/3-Figure2-1.png" width=50%></p>
+<p align="center"><img src="./images/213213123123.PNG" width=50%></p>
 
 - The underlying idea and rationale come from the psychological and neuroscience studies claiming that the executions of simple motor acts are different between pathological and healthy subjects, and this can be sufficient to discriminate between them.
 - This work aims at providing an automatic objective support to the doctor for the assessment of (early) diagnosis of possible autistic subjects by only using video sequences. 
